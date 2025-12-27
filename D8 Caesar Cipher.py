@@ -32,48 +32,24 @@ text = input("Type your message:\n").lower().strip()
 shift = int(input("Enter the key:\n"))
 
 
-def encrypt(original_text, shift_amount):
+def CC(original_text, shift_amount, dirxn):
     newcode = []
     for j in range(len(original_text)):
         if original_text[j] in alphabet:
-            for i in range(26):
-                if original_text[j] == alphabet[i]:
-                    newcode.append(alphabet[(i + shift_amount) % 26])
-                    break
+            i = alphabet.index(original_text[j])
+            if dirxn == "decode":
+                newcode.append(alphabet[(i - shift_amount) % 26])
+            elif direction == "encode":
+                newcode.append(alphabet[(i + shift_amount) % 26])
         else:
             newcode.append(original_text[j])
-
-    print("".join(newcode))
-
-
-# .............................................
-# CHATGPT SUGGESTION
-# can use this instead of the nested loops to work faster
-#
-# if char in alphabet:
-#     i = alphabet.index(char)
-#     newcode.append(alphabet[(i + shift) % 26])
-# .............................................
-
-
-def decrypt(original_text, shift_amount):
-    newcode = []
-    for j in range(len(original_text)):
-        if original_text[j] in alphabet:
-            for i in range(26):
-                if original_text[j] == alphabet[i]:
-                    newcode.append(alphabet[(i - shift_amount) % 26])
-                    break
-        else:
-            newcode.append(original_text[j])
-
     print("".join(newcode))
 
 
 if direction == "encode":
-    encrypt(text, shift)
+    CC(text, shift, direction)
 elif direction == "decode":
-    decrypt(text, shift)
+    CC(text, shift, direction)
 else:
     print("Invalid input")
     exit(1)
