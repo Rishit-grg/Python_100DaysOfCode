@@ -15,7 +15,7 @@ for i in range(0, len(word)):
     placeholder.append("_")
 print("".join(placeholder))
 
-guessed = []
+guessed = set()
 
 # Game loop
 while life != 0 and "_" in placeholder:
@@ -34,7 +34,7 @@ while life != 0 and "_" in placeholder:
         print(f"{life} lives left ")
         continue
 
-    guessed.append(guess)
+    guessed.add(guess)
 
     if guess in word:
         print(f"{guess} is correct guess")
