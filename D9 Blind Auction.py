@@ -3,6 +3,10 @@ bids = {
 }
 
 def name_validation(name_raw, bids):
+    """
+    Takes the name entered by the user as a string and checks if it is in an acceptable format.
+    If it is'nt mentions the problem in the format and asks the user to re-input the name till it is in proper format.
+    """
     while True:
         name = name_raw.strip().title()
 
@@ -16,6 +20,10 @@ def name_validation(name_raw, bids):
         name_raw = input("Enter name/username again - ")
 
 def result(bids):
+    """    
+    Takes the dictionary of the bids entered by the users and announces the winner. 
+    (If more than one person makes the winning bid, the person who bid first wins.)
+    """
     print(".....RESULT.....")
 
     max_bid = max(bids.values())
@@ -54,3 +62,4 @@ while bidders_left :
         else:
             print("Invalid input \nPlease enter Y for yes and N for No.")
 
+# TODO introduce a rebidding fot the winners function to deal with the situation if 2 people have bid the winning amount 

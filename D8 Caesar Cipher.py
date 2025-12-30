@@ -32,24 +32,27 @@ text = input("Type your message:\n").lower().strip()
 shift = int(input("Enter the key:\n"))
 
 
-def CC(original_text, shift_amount, dirxn):
+def Caesar_Cipher(original_text, key, dirxn):
+    """
+    Takes a string (message) as input along with a key and the instruction to Encode or Decode the string, and returns the Encoded or decoded string as per the 
+    """
     newcode = []
     for j in range(len(original_text)):
         if original_text[j] in alphabet:
             i = alphabet.index(original_text[j])
             if dirxn == "decode":
-                newcode.append(alphabet[(i - shift_amount) % 26])
+                newcode.append(alphabet[(i - key) % 26])
             elif direction == "encode":
-                newcode.append(alphabet[(i + shift_amount) % 26])
+                newcode.append(alphabet[(i + key) % 26])
         else:
             newcode.append(original_text[j])
     print("".join(newcode))
 
 
 if direction == "encode":
-    CC(text, shift, direction)
+    Caesar_Cipher(text, shift, direction)
 elif direction == "decode":
-    CC(text, shift, direction)
+    Caesar_Cipher(text, shift, direction)
 else:
     print("Invalid input")
     exit(1)
