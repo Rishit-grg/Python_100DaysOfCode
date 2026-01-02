@@ -2,11 +2,10 @@ import random as rnd
 
 balance = 100
 deck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10]
-play_more = True
 rounds_won =0 
 
 # Round
-while balance > 0 and play_more:
+while balance > 0 :
 
     print(f"You currently have a balance of {balance}$")
 
@@ -23,7 +22,7 @@ while balance > 0 and play_more:
 
 
     # Inital cards dealing
-    print("Shuffling Deck.....\nDealing cards.....")
+    print("\nShuffling Deck.....\nDealing cards.....")
     dealer_cards = [rnd.choice(deck)]
     print("Dealer's cards - ", dealer_cards)
     player_cards = [rnd.choice(deck), rnd.choice(deck)]
@@ -99,9 +98,10 @@ while balance > 0 and play_more:
         print("You lose ")
 
     # Play more ?
-    play_more = (input("Do you want to play further (P) or CashOut(C)")).lower().strip()
-    if play_more[0] == "c":
+    want_to_cashout = (input("Do you want to play further (enter) or CashOut(C)")).lower().strip()
+    if want_to_cashout and want_to_cashout[0] == "c":
         break
+    print("-"*50 + "\n")
 
 # Cashout
 if balance == 0:
@@ -109,8 +109,7 @@ if balance == 0:
 
 print(f"CASHOUT - {balance}$")
 
-# Stats 
-print(f"You wona total of {rounds_won} rounds ")
+# Stats
 
 
 # TODO 
