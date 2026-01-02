@@ -1,12 +1,13 @@
 import random as rnd
 
-balance = 1000
+balance = 100
 deck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10]
-player_bust = False
 play_more = True
+rounds_won =0 
 
 # Round
 while balance > 0 and play_more:
+
     print(f"You currently have a balance of {balance}$")
 
     # Deal amount input
@@ -20,6 +21,7 @@ while balance > 0 and play_more:
         else:
             print("Insufficient Balance. Enter again ")
 
+
     # Inital cards dealing
     print("Shuffling Deck.....\nDealing cards.....")
     dealer_cards = [rnd.choice(deck)]
@@ -27,69 +29,74 @@ while balance > 0 and play_more:
     player_cards = [rnd.choice(deck), rnd.choice(deck)]
     print("Your cards are - ", player_cards)
 
+
     # Hit or Stand
     while True:
         move = (input("Do you want to Hit (H) or Stand (S)? - ")).lower().strip()
-        if move[0] == "h":
+        if move and move[0] == "h" and sum(player_cards) < 21:
             player_cards.append(rnd.choice(deck))
             print("Your cards are - ", player_cards)
-            if sum(player_cards) > 21:
-                player_bust = True
+
+            while sum(player_cards) > 21:
                 if 11 in player_cards:
-                    player_bust = False
                     player_cards[player_cards.index(11)] = 1
                     print("Saved Bust - Your ace changed to 1")
-                    print(player_cards)
+                    print("Your cards are - ", player_cards)
                     continue
                 break
+        elif move and move[0] == "h" and sum(player_cards) >= 21:
+            print("Over the limit, Cannot hit anymore ")
+            break
         elif move == "s":
-            player_bust = False
             break
         else:
-            player_bust = False
             print("Invalid Input ")
 
+
     # Dealer hand
-    if player_bust == False:
+    if sum(player_cards) <= 21:
 
         while sum(dealer_cards) < 17:
             dealer_cards.append(rnd.choice(deck))
 
-            if sum(dealer_cards) > 21:
-                dealer_bust = True
+            while sum(dealer_cards) > 21:
                 if 11 in dealer_cards:
-                    dealer_bust = False
                     dealer_cards[dealer_cards.index(11)] = 1
-                    print("Dealers changes ace to 1")
+                    print("(Dealers changes ace 11 to 1)")
                     continue
                 break
         print("Dealer's cards are - ", dealer_cards)
-    else:
-        dealer_cards.append(rnd.choice(deck))
 
     # Result decision
     player_sum = sum(player_cards)
     dealer_sum = sum(dealer_cards)
     print(f"Your sum is {player_sum}\nThe dealers sum is {dealer_sum}")
 
-    if player_bust:
-        print("Busted : You lose this round ")
-    elif player_sum == 21:
-        print("BLACKJACK : You win this round ")
-        balance += int(2.5 * deal)
-    elif dealer_bust:
-        print("Dealer Busted : You win this round ")
-        balance += int(2.5 * deal)
-    elif dealer_sum == 21:
-        print("DEALERS BLACKJACK : You lose this round ")
-    elif player_sum > dealer_sum:
-        print("You win this round ")
-        balance += int(2.5 * deal)
-    elif player_sum < dealer_sum:
-        print("You lose this round ")
-    elif player_sum == dealer_sum:
-        print("Round draw")
+    if player_sum == dealer_sum:
+        print("Draw")
         balance = balance + deal
+    elif dealer_sum == 21:
+        if len(dealer_cards) == 2:
+            print("DEALER'S BLACKJACK : You lose this round ")
+        else :
+            print("You lose this round ")
+    elif player_sum == 21:
+        if len(player_cards) == 2:
+            print("BLACKJACK : You win this round ")
+            balance += int(2.5 * deal)
+        else :
+            print("You win this round ")
+            balance += int(2 * deal)
+    elif player_sum > 21:
+        print("Busted : You lose this round ")
+    elif dealer_sum > 21:
+        print("Dealer Busted : You win this round ")
+        balance += (2 * deal)
+    elif player_sum > dealer_sum:
+        print("You win ")
+        balance += (2 * deal)
+    else:
+        print("You lose ")
 
     # Play more ?
     play_more = (input("Do you want to play further (P) or CashOut(C)")).lower().strip()
@@ -102,8 +109,11 @@ if balance == 0:
 
 print(f"CASHOUT - {balance}$")
 
+# Stats 
+print(f"You wona total of {rounds_won} rounds ")
+
+
 # TODO 
-# ace logic 
 # input validations 
 # print stats with cashout
 # make showing A K Q J possible
