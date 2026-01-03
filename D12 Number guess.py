@@ -80,6 +80,6 @@ while guesses_left > 0 and not is_won:
         else:
             print("Invalid input. Please enter an integer between 1 and 100.")
 
-    is_won = check_guess(guess, num)
+    is_won = check_guess(guess, num) 
 
 show_result(is_won)
