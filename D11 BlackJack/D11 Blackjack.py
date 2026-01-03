@@ -103,6 +103,7 @@ while balance > 0 :
         break
     print("-"*50 + "\n")
 
+
 # Cashout
 if balance == 0:
     print("You are out of balance")
