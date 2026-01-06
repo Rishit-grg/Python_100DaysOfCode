@@ -59,7 +59,7 @@ while True:
     if True in reso_report:
         print("Proceeding to Payment ......... ")
     else:
-        print(f"We are sorry that we are short of {" & ".join(reso_report)}")
+        print(f"We are sorry that we are short of {' & '.join(reso_report)}")
         continue
 
 
