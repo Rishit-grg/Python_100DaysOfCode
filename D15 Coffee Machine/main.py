@@ -36,7 +36,6 @@ def balance(q, d, n, p, coffee):
     needed = info.MENU[coffee]["cost"]
 
     return received - needed
-#TODO check_reso works, but isn't pretty, can make it better using for loop
 
 
 while True:
