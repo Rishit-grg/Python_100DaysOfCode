@@ -4,7 +4,7 @@ import random
 
 # Import Hists colour Palette using colorgram
 
-colours = colorgram.extract("hirstspot.jpg", 30)
+colours = colorgram.extract("Hirst_sample.jpg", 30)
 palette = []
 
 for i in range(len(colours)):
