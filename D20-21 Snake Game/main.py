@@ -1,6 +1,4 @@
-import time
 import turtle as t
-import random
 import time
 import snake
 snake = snake.Snake()
