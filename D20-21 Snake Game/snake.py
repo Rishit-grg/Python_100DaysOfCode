@@ -11,9 +11,12 @@ class Snake:
         for pos in [(0, 0), (-20, 0), (-40, 0)]:
             segment = t.Turtle("square")
             segment.color("#587CFF")
+            if pos == (0,0):
+                segment.color("#510CFF")
             self.snake.append(segment)
             segment.pu()
             segment.goto(pos)
+
 
     def move(self):
         for seg_num in range(-1, -(len(self.snake)), -1):
