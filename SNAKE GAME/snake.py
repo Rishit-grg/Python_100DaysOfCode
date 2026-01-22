@@ -12,7 +12,7 @@ class Snake:
             segment = t.Turtle("square")
             segment.color("#587CFF")
             if pos == (0,0):
-                segment.color("#510CFF")
+                segment.color("#133667")
             self.snake.append(segment)
             segment.pu()
             segment.goto(pos)
@@ -41,3 +41,10 @@ class Snake:
     def move_down(self):
         if self.head.heading() != 90:
             self.snake[0].setheading(270)
+
+    def grow(self):
+
+        new_segment = t.Turtle("square")
+        new_segment.color("#587CFF")
+        new_segment.pu()
+        self.snake.append(new_segment)

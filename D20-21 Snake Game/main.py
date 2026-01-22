@@ -1,37 +1,16 @@
-import turtle as t
-import time
-import snake
-import food
-import score
-snake = snake.Snake()
+# This is a sample Python script.
 
-screen = t.Screen()
-screen.setup(600, 600)
-screen.bgcolor("#93BC56")
-screen.title("Snake Classic")
-screen.tracer(0)
-
-screen.listen()
-screen.onkey(snake.move_up, "Up")
-screen.onkey(snake.move_down, "Down")
-screen.onkey(snake.move_left, "Left")
-screen.onkey(snake.move_right, "Right")
-
-food = food.Food()
-score = score.Score()
-
-game_on = True
-while game_on:
-    screen.update()
-    time.sleep(0.2)
-
-    snake.move()
-    if snake.head.distance(food) < 21  :
-        score.goto(y=270, x=0)
-        score.update_score()
-        food.newpos()
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-screen.exitonclick()
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print_hi('PyCharm')
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/

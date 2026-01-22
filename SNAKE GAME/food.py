@@ -7,7 +7,7 @@ class Food(t.Turtle):
         self.penup()
         self.color("#E7471D")
         self.speed("fastest")
-        self.goto(random.randint(-280,280),random.randint(-280,280) )
+        self.goto(random.randint(-280,280),random.randint(-280,220) )
 
-    def newpos(self):
-        self.goto(random.randint(-280,280),random.randint(-280,280))
+    def new_posn(self):
+        self.goto(random.randint(-280,280),random.randint(-280,220))
