@@ -28,11 +28,11 @@ food = food.Food()
 score = score.Score()
 score.goto(y=270, x=0)
 
-
+# Game Loop
 game_on = True
 while game_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(0.08)
 
     if score.score == 0:
         score.show_score()
@@ -46,7 +46,8 @@ while game_on:
 
     for segment in snake.snake[1::]:
         if snake.head.distance(segment) < 15:
-            score.goto(y=20, x=0)
+            score.check_highscore()
+            score.goto(y=0, x=0)
             score.game_over()
             game_on = False
 
@@ -54,10 +55,9 @@ while game_on:
         snake.head.goto(-snake.head.xcor(),snake.head.ycor())
 
     if snake.head.ycor() > 300 or snake.head.ycor() < -300:
-        score.goto(y=20, x=0)
+        score.check_highscore()
+        score.goto(y=0, x=0)
         score.game_over()
         game_on = False
 
 screen.exitonclick()
-
-# TODO: use constants instead of the numbers
