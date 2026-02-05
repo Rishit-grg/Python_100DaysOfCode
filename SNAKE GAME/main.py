@@ -32,7 +32,7 @@ score.goto(y=270, x=0)
 game_on = True
 while game_on:
     screen.update()
-    time.sleep(0.08)
+    time.sleep(0.15)
 
     if score.score == 0:
         score.show_score()
