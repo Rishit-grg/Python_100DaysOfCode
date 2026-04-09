@@ -4,9 +4,7 @@ import snake
 import food
 import score
 
-
 snake = snake.Snake()
-
 
 screen = turtle.Screen()
 screen.setup(600, 600)
@@ -14,16 +12,13 @@ screen.bgcolor("#93BC56")
 screen.title("Snake Classic")
 screen.tracer(0)
 
-
 screen.listen()
 screen.onkey(snake.move_up, "Up")
 screen.onkey(snake.move_down, "Down")
 screen.onkey(snake.move_left, "Left")
 screen.onkey(snake.move_right, "Right")
 
-
 food = food.Food()
-
 
 score = score.Score()
 score.goto(y=270, x=0)
